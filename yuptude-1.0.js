@@ -14,14 +14,38 @@ var v;
 //Speed value from manual input field
 var inputval;
 //Container for yuptude widget
-var ytw = document.createElement("div");
+//var ytw = document.createElement("div");
+var ytw = ce("div", document.body, "ytw");
 //Minified contents of the yuptude css & html files
-ytw.innerHTML = '<style id="yptd-style">\
-            #yptd span,#yptd-box{float:left;padding:0 .5em;display:block}#yptd span em,#yptd-bottom,#yptd-in{vertical-align:middle}#yptd-pit,#yptd-pit input{float:right}#yptd a,#yptd-bar{background-color:#fd0d5d}#yptd{z-index:9999999999;position:fixed;bottom:0;left:6px;font:16px Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}#yptd *{margin:0}#yptd a{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;float:left;margin:0 .5em 0 0;padding:.25em 1em;font-weight:700;color:#FFF}#yptd a em{font-size:.9em}#yptd a:active,#yptd a:focus,#yptd a:hover{outline:0;color:#fd0d5d;background-color:#FFF;text-decoration:none}#yptd span{border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:.5em;width:2.5em;border-bottom:2px solid rgba(0,0,0,.25);text-decoration:none;color:#000;background-color:#FFF;cursor:pointer;text-align:center}#yptd span em{font-size:.75em}#yptd span:active,#yptd span:focus,#yptd span:hover{color:#fd0d5d}#yptd-bar{border-radius:3px 3px 0 0;-moz-border-radius:3px 3px 0 0;-webkit-border-radius:3px 3px 0 0;height:2.25em}#yptd-bar:after,#yptd-bottom:after{content:"";display:block;clear:both}#yptd-controls{float:right;height:2.25em;border-left:2px solid rgba(0,0,0,.33)}#yptd-box{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;width:4em;min-width:4em;height:100%;background-color:rgba(0,0,0,.15)}#yptd-in{width:100%;height:100%;border:0;text-align:center;font:14px Helvetica,Arial,sans-serif;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#FFF;background-color:transparent}#yptd-bottom{padding:.75em;font-size:.75em;background-color:rgba(0,0,0,.8)}#yptd-pit{position:relative;padding:.25em 0}#yptd-pit label{margin-right:.5em;color:#FFF}#yptd-pit em{display:none}#yptd-pit:active em,#yptd-pit:focus em,#yptd-pit:hover em{display:block;position:absolute;top:-2.5em;left:0;padding:.5em;white-space:pre;font-size:.8em;background-color:#fd0d5d}\
-            </style>\
-        <div id="yptd"><div id="yptd-bar"><span id="yptd-off"><em>Off</em></span><div id="yptd-controls"><span id="yptd-dwn">-</span><div id="yptd-box"><input id="yptd-in" type="text" value="1.0"></div><span id="yptd-up">+</span></div></div><div id="yptd-bottom"><a href="http://yuptude.com"><em>yuptude</em></a><div id="yptd-pit"><label for="yptd-pin"> Shift Pitch <em>(Firefox &amp; Safari only)</em></label><input type="checkbox" name="yptd-pin" id="yptd-pin" value="1"></div></div></div>\
-';
-document.body.appendChild(ytw);
+var ytwStyle = ce("style", ytw, "yptd-style");
+ytwStyle.textContent = '#yptd span,#yptd-box{float:left;padding:0 .5em;display:block}#yptd span em,#yptd-bottom,#yptd-in{vertical-align:middle}#yptd-pit,#yptd-pit input{float:right}#yptd a,#yptd-bar{background-color:#fd0d5d}#yptd{z-index:9999999999;position:fixed;bottom:0;left:6px;font:16px Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}#yptd *{margin:0}#yptd a{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;float:left;margin:0 .5em 0 0;padding:.25em 1em;font-weight:700;color:#FFF}#yptd a em{font-size:.9em}#yptd a:active,#yptd a:focus,#yptd a:hover{outline:0;color:#fd0d5d;background-color:#FFF;text-decoration:none}#yptd span{border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:.5em;width:2.5em;border-bottom:2px solid rgba(0,0,0,.25);text-decoration:none;color:#000;background-color:#FFF;cursor:pointer;text-align:center}#yptd span em{font-size:.75em}#yptd span:active,#yptd span:focus,#yptd span:hover{color:#fd0d5d}#yptd-bar{border-radius:3px 3px 0 0;-moz-border-radius:3px 3px 0 0;-webkit-border-radius:3px 3px 0 0;height:2.25em}#yptd-bar:after,#yptd-bottom:after{content:"";display:block;clear:both}#yptd-controls{float:right;height:2.25em;border-left:2px solid rgba(0,0,0,.33)}#yptd-box{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;width:4em;min-width:4em;height:100%;background-color:rgba(0,0,0,.15)}#yptd-in{width:100%;height:100%;border:0;text-align:center;font:14px Helvetica,Arial,sans-serif;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#FFF;background-color:transparent}#yptd-bottom{padding:.75em;font-size:.75em;background-color:rgba(0,0,0,.8)}#yptd-pit{position:relative;padding:.25em 0}#yptd-pit label{margin-right:.5em;color:#FFF}#yptd-pit em{display:none}#yptd-pit:active em,#yptd-pit:focus em,#yptd-pit:hover em{display:block;position:absolute;top:-2.5em;left:0;padding:.5em;white-space:pre;font-size:.8em;background-color:#fd0d5d}#yptd-off,#yptd-lnk,#yptd_brwsrs{font-weight:strong;}';
+
+	let yptd=ce("div",ytw, "yptd");
+	let yptd_bar=ce("div",yptd, "yptd-bar");
+	let yptd_off=ce("span",yptd_bar, "yptd-off");
+	let yptd_off_txt=ce("em",yptd_off);
+	yptd_off_txt.textContent="Off";
+	let yptd_controls=ce("div",yptd_bar, "yptd-controls");
+	let yptd_dwn=ce("span",yptd_controls, "yptd-dwn");
+	yptd_dwn.textContent="-";
+	let yptd_box=ce("div",yptd_controls, "yptd-box");
+	let yptd_in=ce("input",yptd_box, "yptd-in");
+	yptd_in.type="text";
+	yptd_in.value=+s;
+	let yptd_up=ce("span",yptd_controls, "yptd-up");
+	yptd_up.textContent="+";
+	let yptd_bottom=ce("div",yptd, "yptd-bottom");
+	let yptd_lnk=ce("a",yptd_bottom, "yptd-lnk");
+	yptd_lnk.href="http://yuptude.com";
+	let yptd_lnk_txt=ce("em",yptd_lnk);
+	yptd_lnk_txt.textContent="yuptude";
+	let yptd_pit=ce("div",yptd_bottom, "yptd-pit");
+	let yptd_pinlb=ce("label",yptd_pit);
+	yptd_pinlb.setAttribute("for", "yptd-pin");
+	yptd_pinlb.textContent="Shift Pitch ";
+	let yptd_brwsrs = ce ("em", yptd_pinlb, "yptd-brwsws");
+	yptd_brwsrs.textContent = "(Firefox & Safari only)";
+	let yptd_pin=ce("input",yptd_pit, "yptd-pin");yptd_pit.name="yptd-pin";yptd_pin.type="checkbox";
 
 var ytw = dg("yptd");
 var yts = dg("yptd-style");
@@ -30,6 +54,14 @@ var yti_off = dg("yptd-off");
 var yti_pit = dg("yptd-pin");
 var yti_up = dg("yptd-up");
 var yti_dwn = dg("yptd-dwn");
+
+// Function Create Element helper function
+function ce(t,p) {
+	let el=document.createElement(t);
+	p.appendChild(el);
+	if (arguments.length == 3 && arguments[2]) el.id = arguments[2];
+	return el;
+}
 
 //getElementById helper function
 function dg(ID) {
